@@ -1,77 +1,38 @@
-// registration
-document.getElementById("Contact").addEventListener("submit", function (event) {
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  var cin = document.getElementById("cin").value;
-  var phone = document.getElementById("phone").value;
-  var isValid = true;
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.querySelector(".register");
+  form.addEventListener('submit', function (event) {
+    var name = document.getElementById('name').value;
+    var cin = document.getElementById('cin').value;
+    var tel = document.getElementById('tel').value;
+    var email = document.getElementById('email').value;
 
-  // Full name
-  const nameError = document.getElementById("nameError")
-  if (name.trim() === "") {
-      nameError.innerHTML = "Please enter your full name.<br>";
-      isValid = false;
-  }else if(!validateFullName(name)) {
-      nameError.innerHTML = "Invalid full name.<br>";
-      isValid = false;
-  }else{
-      nameError.innerHTML="" ;
-  }
+    var fullNameRegex = /^[A-Za-z\s']{3,}$/;
+    var cinRegex = /^[a-zA-Z]{2}\d{6}$/;
+    var telRegex = /^[+212]\d{9}$/;
+    var emailRegex = /^\S+@\S+.\S+$/;
 
-  // Email
-  const emailError = document.getElementById("emailError")
-  if (email.trim() === "") {
-      emailError.innerHTML = "Please enter your email.<br>";
-      isValid = false;
-  } else if (!validateEmail(email)) {
-      emailError.innerHTML = "Please enter a valid email address.<br>";
-      isValid = false;
-  }else{
-      emailError.innerHTML="" ;
-  }
-
-  // CIN
-  const cinError = document.getElementById("cinError");
-  if (cin.trim() === "") {
-      cinError.innerHTML = "Please enter your CIN.<br>";
-      isValid = false;
-  }else if (!validateCin(cin)){
-      cinError.innerHTML = "Please enter a valid CIN.<br>";
-      isValid = false;
-  }else{
-      cinError.innerHTML = "Invalid full name";
-  }
-
-  // Phone
-  const phoneError = document.getElementById("phoneError");
-  if (phone.trim() === "") {
-      phoneError.innerHTML = "Please enter your phone number.<br>";
-      isValid = false;
-  } else if (!validatePhone(phone)){
-      phoneError.innerHTML = "Please enter incorrect phone number.<br>";
-      isValid = false;
-  }else{
-      phoneError.innerHTML = "";
-  }
-if (!isValid) {
+    if (!fullNameRegex.test(name)) {
+      alert("Please enter a valid full name (minimum 3 characters).");
       event.preventDefault();
-  }
+      return;
+    }
+
+    if (!cinRegex.test(cin)) {
+      alert("Please enter a valid CIN (8 digits).");
+      event.preventDefault();
+      return;
+    }
+
+    if (!telRegex.test(tel)) {
+      alert("Please enter a valid phone number (starts with +212 and followed by 9 digits).");
+      event.preventDefault();
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      event.preventDefault();
+      return;
+    }
+  });
 });
-
-function validateEmail(email) {
-  var regex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
-  return regex.test(email);
-}
-function validatePhone(phone){
-  var regex = /^(?:+212|212)?\d{9}$/;
-  return regex.test(phone);
-}
-
-function validateCin(cin){
-  var regex = /^[a-zA-Z]{2}\d{6}$/;
-  return regex.test(cin);
-}
-function validateFullName(name) {
-  var regex = /^[A-Za-z\s]+$/;
-  return regex.test(name);
-}

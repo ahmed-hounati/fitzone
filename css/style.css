@@ -338,7 +338,7 @@ section .sign form input {
   border-radius: 15px;
 }
 
-section .sign form .submit {
+section .sign form .sub {
   padding: 0 20px;
   width: 150px;
   background-color: var(--main-color);
