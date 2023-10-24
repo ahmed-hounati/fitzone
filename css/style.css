@@ -66,10 +66,10 @@ section .home {
   gap: 50px;
 }
 
-/* span {
+span {
   color: var(--secend-color);
   font-size: var(--h2-font);
-} */
+}
 
 section .home h1 {
   font-size: var(--big-font);
