@@ -1,41 +1,77 @@
-// Fonction de validation générique
-function validateField(inputid, regex, errorMessage) {
-  const inputField = document.querySelector(inputid);
-  const inputValue = inputField.value.trim();
-  const errorSpan = inputField.parentElement.querySelector(".error");
-  const successSpan = inputField.parentElement.querySelector(".succes");
+// registration
+document.getElementById("Contact").addEventListener("submit", function (event) {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var cin = document.getElementById("cin").value;
+  var phone = document.getElementById("phone").value;
+  var isValid = true;
 
-  if (regex.test(inputValue)) {
-      inputField.classList.remove("error");
-      inputField.classList.add("success");
-      errorSpan.style.display = "none";
-      successSpan.style.display = "block";
-  } else {
-      inputField.classList.remove("success");
-      inputField.classList.add("error");
-      errorSpan.style.display = "block";
-      successSpan.style.display = "none";
-      errorSpan.textContent = errorMessage;
+  // Full name
+  const nameError = document.getElementById("nameError")
+  if (name.trim() === "") {
+      nameError.innerHTML = "Please enter your full name.<br>";
+      isValid = false;
+  }else if(!validateFullName(name)) {
+      nameError.innerHTML = "Invalid full name.<br>";
+      isValid = false;
+  }else{
+      nameError.innerHTML="" ;
   }
+
+  // Email
+  const emailError = document.getElementById("emailError")
+  if (email.trim() === "") {
+      emailError.innerHTML = "Please enter your email.<br>";
+      isValid = false;
+  } else if (!validateEmail(email)) {
+      emailError.innerHTML = "Please enter a valid email address.<br>";
+      isValid = false;
+  }else{
+      emailError.innerHTML="" ;
+  }
+
+  // CIN
+  const cinError = document.getElementById("cinError");
+  if (cin.trim() === "") {
+      cinError.innerHTML = "Please enter your CIN.<br>";
+      isValid = false;
+  }else if (!validateCin(cin)){
+      cinError.innerHTML = "Please enter a valid CIN.<br>";
+      isValid = false;
+  }else{
+      cinError.innerHTML = "Invalid full name";
+  }
+
+  // Phone
+  const phoneError = document.getElementById("phoneError");
+  if (phone.trim() === "") {
+      phoneError.innerHTML = "Please enter your phone number.<br>";
+      isValid = false;
+  } else if (!validatePhone(phone)){
+      phoneError.innerHTML = "Please enter incorrect phone number.<br>";
+      isValid = false;
+  }else{
+      phoneError.innerHTML = "";
+  }
+if (!isValid) {
+      event.preventDefault();
+  }
+});
+
+function validateEmail(email) {
+  var regex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+  return regex.test(email);
+}
+function validatePhone(phone){
+  var regex = /^(?:+212|212)?\d{9}$/;
+  return regex.test(phone);
 }
 
-// Écouter les événements "input" pour déclencher la validation à chaque saisie
-document.getElementById("name").addEventListener("input", () => {
-  validateField("full-name", /^[A-Za-z\s]{3,}$/, "the name have at least  3 caracteres.");
-});
-
-document.getElementById("email").addEventListener("input", () => {
-  validateField("email", /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/, "Invalide e-mail.");
-});
-
-document.getElementById("text").addEventListener("input", () => {
-  validateField("cin", /^[A-Z]{2}\d{6}$/, "Incorrect CIN.");
-});
-
-document.getElementById("tel").addEventListener("input", () => {
-  validateField("phone-number", /^+212\d{9}$|^\d{10}$/, "Invalide phone number.");
-});
-
-document.getElementById("password").addEventListener("input", () => {
-  validateField("pack-name", /^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$/, "the password at least 8 caracteres.");
-});
+function validateCin(cin){
+  var regex = /^[a-zA-Z]{2}\d{6}$/;
+  return regex.test(cin);
+}
+function validateFullName(name) {
+  var regex = /^[A-Za-z\s]+$/;
+  return regex.test(name);
+}

@@ -41,57 +41,23 @@
       <h2>Sign Up</h2>
     </div>
     <div class="sign">
-      <form>
+      <form id="Contact">
         <label>Full Name :</label>
-        <input type="text" id="name">
-        <div class="error">
-          <p>
-            enter the correct name!
-          </p>
-        </div>
-        <div class="succes">
-          <p>
-            succes
-          </p>
-        </div>
+        <input id="name">
+        <span id="nameError">
+        </span>
         <label>Email :</label>
-        <input type="email" id="email">
-        <div class="error">
-          <p>
-            enter the correct E-mail!
-          </p>
-        </div>
-        <div class="succes">
-          <p>
-            succes
-          </p>
-        </div>
+        <input id="email">
+        <span id="emailError">
+        </span>
         <label>C.I.N :</label>
-        <input type="text" id="text">
-        <div class="error">
-          <p>
-            enter the correct C.I.N!
-          </p>
-        </div>
-        <div class="succes">
-          <p>
-            succes
-          </p>
-        </div>
+        <input id="cin">
+        <span id="cinError">
+        </span>
         <label>Phone N°:</label>
-        <input type="tel" id="tel">
-        <div class="error">
-          <p>
-            enter the correct phone N°!
-          </p>
-        </div>
-        <div class="succes">
-          <p>
-            succes
-          </p>
-        </div>
-        <label>Password:</label>
-        <input type="password" id="password">
+        <input id="phone">
+        <span id="phoneError">
+        </span>
         <input class="submit" type="submit" value="SIGN UP">
       </form>
       <div>
@@ -139,6 +105,7 @@
   </section>
 
   <script src="js/script.js" defer></script>
+  <script src="js/reajicts.js" defer></script>
 </body>
 
 </html>
