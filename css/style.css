@@ -426,6 +426,7 @@ section .home3 h2 {
     width: 100%;
     text-align: center;
     transition: 1.3s ease;
+    z-index: 1;
   }
 
   .nav-bar li {
