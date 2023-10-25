@@ -264,7 +264,7 @@ section .home2 h2 {
   flex-direction: column;
   align-items: center;
   color: var(--white-color);
-  background-color: var(--text-color);
+  background-color: var(--secend-color);
   border-radius: 30px;
 }
 
