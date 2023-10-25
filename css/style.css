@@ -612,4 +612,26 @@ section .home3 h2 {
     margin-left: 100px;
   }
 
+  .program .home2 h2 {
+    font-size: var(--p-font);
+  }
+
+  .line1 .card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 30px;
+  }
+
+  .line2 .card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 30px;
+  }
+
+  #card {
+    width: 100%;
+    margin: 10px;
+  }
 }
